@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "@gridsome/source-filesystem": "^0.3.0",
-    "gridsome": "^0.5.0"
+    "gridsome": "^0.5.0",
+    "gridsome-plugin-rss": "^1.1.0"
   },
   "devDependencies": {
     "@gridsome/transformer-remark": "^0.2.1"
