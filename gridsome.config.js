@@ -5,51 +5,17 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "Gridsome",
+  siteName: "ryanhaley.dev",
+  siteUrl: "https://ryanhaley.dev",
+  siteDescription:
+    "Musings and reminders of a direct-to-business, vertical market software engineer",
   plugins: [
     {
       use: "@gridsome/source-filesystem",
       options: {
-        path: "src/posts/**/*.md",
-        typeName: "Post",
-        route: "/posts/:year/:month/:day/:slug"
-      }
-    },
-    {
-      use: "gridsome-plugin-rss",
-      options: {
-        contentTypeName: "Post",
-        feedOptions: {
-          title: "ryanhaley.dev",
-          feed_url: "https://ryanhaley.dev/rss.xml",
-          site_url: "https://ryanhaley.dev"
-        },
-        feedItemOptions: (node) => {
-          const dt = new Date(node.date)
-          const year = dt.getFullYear()
-          const month = `${dt.getMonth() < 10 ? "0" : ""}${dt.getMonth()}`
-          const day = `${dt.getDate() < 10 ? "0" : ""}${dt.getDate()}`
-          return {
-            title: node.title,
-            description: node.description,
-            url: `https://ryanhaley.dev/posts/${year}/${month}/${day}/${
-              node.slug
-            }`,
-            author: "Ryan Haley"
-          }
-        },
-        output: {
-          dir: "./static",
-          name: "rss.xml"
-        }
+        path: "posts/**/*.md",
+        typeName: "Post"
       }
     }
-  ],
-
-  transformers: {
-    remark: {
-      externalLinksTarget: "_blank",
-      externalLinksRel: ["nofollow", "noopener", "noreferrer"]
-    }
-  }
+  ]
 }
