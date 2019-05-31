@@ -20,7 +20,7 @@
 <page-query>
 # Write your query or mutation here
 query Items {
-  posts: allPost {
+  posts: allPost(filter:{draft:{ne:true}}) {
     edges {
       node {
         id
@@ -28,6 +28,7 @@ query Items {
         path
         tags
         date
+        draft
       }
     }
   }
